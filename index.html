@@ -66,12 +66,23 @@
 		</div>
 		<br>
 		
-		<p style="text-align:center">
+		<!--<p style="text-align:center">
 			검색 : <input type = "text" name = "search" size = "55" value="">
 			<button id = "search_btn" type="button">검색
-			</button></p>	<br><br>
+			</button></p>	<br><br>-->
+		<form action="https://www.google.co.kr/search" method="GET" target="_blank">
+            <div class="d-flex justify-content-center">
+				<caption align="top">현재 검색어 : <p id="search_message">
+                <mx-auto>
+                    <input name=“query” type=“text” class=“form-control-lg” placeholder="검색어 입력" aria-label=“search” aria-describedby=“search btn” id=“search_text”>
+                </mx-auto>
+                <button class="btn btn-success" type="submit" id="search_btn">검색</button>
+           		</p>
+			</caption>
+			</div>
+        </form>
 		
-		<table style="margin-left: auto; margin-right: auto;" border="1" width="500">
+		<!--<table style="margin-left: auto; margin-right: auto;" border="1" width="500">
 				<!테이블을 정의합니다.>
 				<caption align = "top">인기 검색어</caption> <!테이블 제목>
 				<tbody>
@@ -84,7 +95,40 @@
 						<!colspan은 병합>
 					<td>LOL</td><td>WOW</td><td>SUDDEN</td></tr><!3행추가!>				
 			</tbody>
-		</table> <br><br>
+		</table> <br><br>-->
+		
+		 <div class="w-auto p-3" style="background-color: #;">
+        <!-- <table class="table table-striped table-bordered table-hover"> -->
+        <table class="table table-dark table-hover">
+	<caption align="top">인기 검색어</caption>
+	<tbody class="table-group-divider">
+                <tr bgcolor="yellow">
+                    <td class="table-primary" width="50"><b>영화</b>
+                    </td>
+                    <td width="80" bgcolor="blue">아저씨</td>
+                    <td width="80" bgcolor="blue">아저씨</td>
+                    <td width="100">어머니</td>
+                    <td width="100">헬머니</td>
+                    <td>할부지</td>
+                </tr>
+			<tr bgcolor="red">
+                    <td class="table-secondary" width="50"><b>음악</b></td>
+                    <td>KPOP</td>
+                    <td>JPOP</td>
+                    <td>ROCK1</td>
+                    <td>ROCK2</td>
+                    <td>EUROBEAT</td>
+                </tr>
+			<tr bgcolor="blue">
+                    <td class="table-success" width="50"><b>게임</b></td>
+                    <td>LOL</td>
+                    <td>WOW</td>
+                    <td>DIABLO</td>
+                    <td colspan="2">SUDDEN ATTACK 2</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
 		
 		<p style="text-align:center">
 			<button type = button onclick = "window.open('https://github.com/minseo121/web_20220994');"> 민서의 깃허브 
