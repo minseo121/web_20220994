@@ -71,13 +71,15 @@
 			검색 : <input type = "text" name = "search" size = "55" value="">
 			<button id = "search_btn" type="button">검색
 			</button></p>	<br><br>-->
-		<form id="form_main" action="https://www.google.co.kr/search" method="GET" target="_blank" onsubmit="return false">
+		<form action="https://www.google.co.kr/search" method="GET" target="_blank">
             <div class="d-flex justify-content-center">
                 <mx-auto>
-                    <input name=“query” type=“text” class=“form-control-lg” placeholder="검색어 입력" aria-label=“search” aria-describedby=“search btn” id=“search_text”>
+                    <input name="query" size = "25" type="text" class="form-control-lg" placeholder="검색어 입력" aria-label="search" aria-describedby="search_btn">
+					<button class="btn btn-success" type="submit" id="search_btn">검색</button>
                 </mx-auto>
-                <button class="btn btn-success" type="submit" id="search_btn">검색</button>
 			</div>
+			<caption align = "top"> 현재 검색어: <p id="search_message"></p></caption>
+			<input name="query" type="text" class="form-control-lg" placeholder="검색어 입력" aria-label = "search" aria-describedby="search btn" id="search_text"> 
         </form>
 		
 		<!--<table style="margin-left: auto; margin-right: auto;" border="1" width="500">
