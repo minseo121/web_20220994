@@ -1,3 +1,13 @@
+function addJavascript(jsname){
+	var th = document.getElementsByTagName('head')[0];
+	var s = document.createElement('script');
+	s.setAttribute('type','text/javascript');
+	s.setAttribute('src',jsname);
+	th.appendChild(s);
+}
+addJavascript('/js/session.js');
+addJavascript('/js/cookie.js');
+
 function login(){
     let form = document.querySelector("#form_main");
     let id = document.querySelector("#floatingInput");
@@ -48,51 +58,6 @@ function logout(){
 	session_del(); // 세션 삭제
 	location.href="index.html";
 }
-
-function setCookie(name, value, expiredays) {
-        var date = new Date();
-        date.setDate(date.getDate() + expiredays);
-        document.cookie = escape(name) + "=" + escape(value) + "; expires=" + date.toUTCString();        
-    }
-
-function getCookie(name) {
-        var cookie = document.cookie;
-        console.log("쿠키를 요청합니다.");
-        if (cookie != "") {
-            var cookie_array = cookie.split("; ");
-            for ( var index in cookie_array) {
-                var cookie_name = cookie_array[index].split("=");
-                
-                if (cookie_name[0] == "id") {
-                    return cookie_name[1];
-                }
-            }
-        }
-        return ;
-}
-function session_set() { //세션 저장
-    let id = document.querySelector("#floatingInput");
-    if (sessionStorage) {
-        sessionStorage.setItem("Session_Storage_test", id.value);
-
-    } else {
-        alert("로컬 스토리지 지원 x");
-    }
-}
-
-function session_get() { //세션 읽기
-    if (sessionStorage) {
-       return sessionStorage.getItem("Session_Storage_test");
-    } else {
-        alert("세션 스토리지 지원 x");
-    }
-}
-function session_check() { //세션 검사
-    if (sessionStorage.getItem("Session_Storage_test")) {
-        alert("이미 로그인 되었습니다.");
-        location.href='index_login.html'; // 로그인된 페이지로 이동
-    }
-}
 function init(){ // 로그인 폼에 쿠키에서 가져온 아이디 입력
    let id = document.querySelector("#floatingInput");
    let check = document.querySelector("#idSaveCheck");
@@ -103,16 +68,6 @@ function init(){ // 로그인 폼에 쿠키에서 가져온 아이디 입력
       check.checked = true; 
    }
    session_check();   //세션 유무 검사
-}
-function session_del() {//세션 삭제
-    // Check if the sessionStorage object exists
-    if (sessionStorage) {
-        // Retrieve data
-        sessionStorage.removeItem("Session_Storage_test");
-        alert('로그아웃 버튼 클릭 확인 : 세션 스토리지를 삭제합니다.');
-    } else {
-        alert("세션 스토리지 지원 x");
-    }
 }
 
 
