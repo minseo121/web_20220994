@@ -42,7 +42,6 @@ function get_id(){
         decrypt_text();
     }
     else{
-
 		var getParameters = function(paramName){ // 변수 = 함수(이름)
 		var returnValue; // 리턴값을 위한 변수 선언
 		var url = location.href; // 현재 접속 중인 주소 정보 저장

@@ -13,6 +13,7 @@
 		<script type="text/javascript" src="../js/search.js" defer></script>
 		<script type="text/javascript" src="../js/pop_up.js" defer></script>
 		<script type="text/javascript" src="../js/login.js" defer></script>
+		<script type="text/javascript" src="../js/hover.js" defer></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script> 
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
@@ -20,12 +21,9 @@
 	</head>
 	
 	<body onload="get_id();">
-		<h1>
-			 Hello, world!
-		</h1>
 		<nav class="navbar navbar-expand-lg bg-light">
   		<div class="container-fluid">
-    <a class="navbar-brand" href="#">전체 메뉴</a>
+    <a class="navbar-brand" href="#">MINJA</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,7 +36,7 @@
           <a class="nav-link" href="https://www.youtube.com/" target='blank'>유튜브</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://map.naver.com/v5/" target='blank'>지도</a>
+          <a class="nav-link" href="profile/profile.html" target='_blank'>소개 페이지</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,17 +56,12 @@
   </div>
 </nav>
 
-		<p style="text-align:left;">
-		<font size = "2em" color="green">문서제목,자바스크립트,CSS
-			스타일 정의, 메타데이터정의</font></p>
-		<br><! br은 줄바꿈입니다.>
-	<hr> <! hr은 밑줄을 그려줍니다> 
-		<br><br><br><br>
 		
 		<!--p style="text-align:center"-->
+		<br><br><br><br>
 		<div class="mx-auto" style="width: 400px;">
 			<a href="index.html" target = "_blank"><! _blank는 새로운 탭>
-				<img src= "img/1.png" class="img-fluid" alt="구글이미지"></a>
+				<img src = "img/3minja.png" class = "img-fluid" alt="민자 이미지"></a>
 		</div>
 		<br>
 		
@@ -76,15 +69,13 @@
 			검색 : <input type = "text" name = "search" size = "55" value="">
 			<button id = "search_btn" type="button">검색
 			</button></p>	<br><br>-->
-		<form action="https://www.google.co.kr/search" method="GET" target="_blank">
+		<form id="form_main" action="https://www.google.co.kr/search" method="GET" target="_blank" onsubmit="return false">
             <div class="d-flex justify-content-center">
                 <mx-auto>
-                    <input name="query" size = "25" type="text" class="form-control-lg" placeholder="검색어 입력" aria-label="search" aria-describedby="search_btn">
-					<button class="btn btn-success" type="submit" id="search_btn">검색</button>
+                    <input name="query" type="text" class="form-control-lg" placeholder="검색어 입력" aria-label="search" aria-describedby="search_btn" id="search_txt">
                 </mx-auto>
-			</div>
-			<caption align = "top"> 현재 검색어: <p id="search_message"></p></caption>
-			<input name="query" type="text" class="form-control-lg" placeholder="검색어 입력" aria-label = "search" aria-describedby="search btn" id="search_txt"> 
+                <button class="btn btn-success" type="submit" id="search_btn">검색</button>
+           </div>
         </form>
 		
 		<!--<table style="margin-left: auto; margin-right: auto;" border="1" width="500">
@@ -101,10 +92,10 @@
 					<td>LOL</td><td>WOW</td><td>SUDDEN</td></tr><!3행추가!>				
 			</tbody>
 		</table> <br><br>-->
-		
-		 <div class="w-auto p-3" style="background-color: #;">
+		<div class="w-auto p-3" style="background-color: #;">
         <!-- <table class="table table-striped table-bordered table-hover"> -->
         <table class="table table-dark table-hover">
+		<caption align="top">현재 검색어 : <p id="search_message"></p></caption>
 	<caption align="top">인기 검색어</caption>
 	<tbody class="table-group-divider">
                 <tr bgcolor="yellow">
@@ -146,10 +137,6 @@
 		<br><br><br>
 		
 		<hr>
-		<p style="text-align:right;">
-			<font size = "3em" color = "red">
-			문서의 본문 텍스트, 이미지, 테이블, 자바스크립트 코드, 동영상 등
-			</font></p><br><br>
 		 <footer class="bg-light text-center text-lg-start">
   <div class="text-center p-3" style="background-color:#D8D8D8;">
     <h3 class="text-secondary">FOOTER TEST</h3>
