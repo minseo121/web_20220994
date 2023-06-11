@@ -17,7 +17,7 @@
 				integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	</head>
 	
-	<body class = "text-center">
+	<body class = "text-center" onload="init();">
 		<br><br>
 		<!--p style="text-align:center"-->
 		<div class="mx-auto" style="width: 400px;">
@@ -29,11 +29,11 @@
       <form id="form_main" onsubmit="return false">
         <h1 class="h3 mb-3 fw-normal">로그인을 해주세요!</h1>
         <div class="form-floating">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <input type="email" class="form-control" id="floatingInput" name="id" placeholder="name@example.com">
           <label for="floatingInput">이메일 주소 입력</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <input type="password" class="form-control" id="floatingPassword" name="pass" placeholder="Password">
           <label for="floatingPassword">비밀번호 입력</label>
         </div>
 
@@ -42,7 +42,7 @@
 				<input type="checkbox" value="remember-me" id="idSaveCheck"> 아이디 기억
 			 </label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" onclick="login()" type="submit">로그인하기</button>
+        <button class="w-100 btn btn-lg btn-primary" onclick="login();" type="submit">로그인하기</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2017–2023</p>
           
         <!-- 

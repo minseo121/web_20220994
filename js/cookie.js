@@ -1,7 +1,7 @@
 function setCookie(name, value, expiredays) {
         var date = new Date();
         date.setDate(date.getDate() + expiredays);
-        document.cookie = escape(name) + "=" + escape(value) + "; expires=" + date.toUTCString();        
+        document.cookie = escape(name) + "=" + escape(value) + "; expires=" + date.toUTCString();
     }
 
 function getCookie(name) {
@@ -18,4 +18,9 @@ function getCookie(name) {
             }
         }
         return ;
+}
+function deleteCookie(cookieName){
+	var expireDate = new Date();
+	expireDate.setDate(expireDate.getDate()-1);
+	document.cookie=cookieName+"="+";expires="+expireDate.toGMTString();
 }
