@@ -9,6 +9,28 @@ addJavascript('/js/security.js');
 addJavascript('/js/session.js');
 addJavascript('/js/cookie.js');
 
+function login_count() {
+    let count = getCookie("login_cnt");
+    if (count) {
+        count = parseInt(count) + 1;
+    } else {
+        count + 1;
+    }
+    setCookie("login_cnt", count, 1); // 1일 저장
+    console.log("로그인 횟수: " + count);
+}
+
+function logout_count() {
+    let count = getCookie("logout_cnt");
+    if (count) {
+        count = parseInt(count) + 1;
+    } else {
+        count + 1;
+    }
+    setCookie("logout_cnt", count, 1); // 1일 저장
+    console.log("로그아웃 횟수: " + count);
+}
+
 function login(){
     let form = document.querySelector("#form_main");
     let id = document.querySelector("#floatingInput");
@@ -18,6 +40,7 @@ function login(){
     
     form.action = "../index_login.html";
     form.method = "get"
+	login_count();
     
 	if(check.checked == true) { // 아이디 체크 o
             alert("쿠키를 저장합니다.");
@@ -32,11 +55,32 @@ function login(){
     if(id.value.length === 0 || password.value.length === 0){
         alert("아이디와 비밀번호를 모두 입력해주세요.");
     }else{
-		session_set(); // 세션 생성
-        form.submit();
-		//return true;
+		login_check();
     }
 }
+
+function login_check() {
+    let id = document.querySelector("#floatingInput");
+    let password = document.querySelector("#floatingPassword");
+
+    // 이메일 형식 검사
+    let emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    if (!emailRegex.test(id.value)) {
+        alert("올바르게 이메일을 입력해주세요.");
+        return;
+    }
+
+    // 패스워드 형식 검사
+    let passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+    if (!passwordRegex.test(password.value)) {
+        alert("8자 이상, 16자 이내에 알파벳에 해당하는 비밀번호를 입력해주세요.");
+        return;
+    }
+
+    session_set(); // 세션 생성
+    document.querySelector("#form_main").submit();
+}
+
 function get_id(){
 	if(true){
         decrypt_text();
@@ -62,6 +106,7 @@ function get_id(){
 
 function logout(){
 	session_del(); // 세션 삭제
+	logout_count();
 	location.href="index.html";
 }
 function init(){ // 로그인 폼에 쿠키에서 가져온 아이디 입력
