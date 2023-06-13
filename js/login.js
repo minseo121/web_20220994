@@ -8,6 +8,7 @@ function addJavascript(jsname){
 addJavascript('/js/security.js');
 addJavascript('/js/session.js');
 addJavascript('/js/cookie.js');
+addJavascript('/js/join.js');
 
 function login_count() {
     let count = getCookie("login_cnt");
@@ -74,12 +75,21 @@ function login_check() {
     // 패스워드 형식 검사
     let passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
     if (!passwordRegex.test(password.value)) {
-        alert("8자 이상, 16자 이내에 알파벳에 해당하는 비밀번호를 입력해주세요.");
+        alert("8~16자리, 숫자와 영문자 조합에 해당하는 패스워드를 입력해주세요.");
         return;
     }
 
+     login_check2(id.value, password.value);
+}
+
+function login_check2(id, password) {
+  let user = userList.find((user) => user.id === id && user.password === password);
+  if (user) {
     session_set(); // 세션 생성
-    document.querySelector("#form_main").submit();
+    document.querySelector('#form_main').submit();
+  } else {
+    alert('일치하는 아이디와 패스워드가 없습니다.');
+  }
 }
 
 function get_id(){
