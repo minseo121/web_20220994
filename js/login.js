@@ -12,8 +12,9 @@ addJavascript('/js/join.js');
 
 function login_count() {
     let count = getCookie("login_cnt");
-    if (count) {
-        count = parseInt(count) + 1;
+    if (isNaN(count)) {
+		let a = 1;
+        a + 1;
     } else {
         count = 0; // 초기값을 0으로 설정
     }
@@ -24,8 +25,8 @@ function login_count() {
 
 function logout_count() {
     let count = getCookie("logout_cnt");
-    if (count) {
-        count = parseInt(count) + 1;
+    if (isNaN(count)) {
+        count + 1;
     } else {
         count = 1;
     }
