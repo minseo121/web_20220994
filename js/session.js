@@ -31,7 +31,7 @@
 
 function session_get() { //세션 읽기
     if (sessionStorage) {
-       return sessionStorage.getItem("Session_Storage_encrypted");
+       return sessionStorage.getItem("Session_Storage_object");
     } else {
         alert("세션 스토리지 지원 x");
     }
