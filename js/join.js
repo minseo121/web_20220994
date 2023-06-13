@@ -44,7 +44,6 @@ class SignUp {
   }
 }
 
-let userList = []; // 사용자 리스트 생성
 let emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 let passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
 
@@ -54,16 +53,6 @@ function validateEmail(email) {
 
 function validatePassword(password) {
     return passwordRegex.test(password);
-}
-
-function addToUserList(id, password) {
-    const user = {
-        id: id,
-        password: password
-    };
-
-    userList.push(user);
-    console.log("사용자 리스트:", userList);
 }
 
 function join(){ // 회원가입
@@ -87,8 +76,9 @@ function join(){ // 회원가입
         alert("유효한 아이디를 입력해주세요.");
     } else if (!validatePassword(password.value)) {
         alert("유효한 패스워드를 입력해주세요. (8~16자리, 숫자와 영문자 조합)");
-    } else {
-        addToUserList(id.value, password.value);
+    } else{
+        setCookie("id", id.value);
+        setCookie("password", password.value);
         session_join_set();
         form.submit();
     }

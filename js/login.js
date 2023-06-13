@@ -77,13 +77,15 @@ function login_check() {
         return;
     }
 
-     login_check2(id.value, password.value);
+    session_set(); // 세션 생성
+    document.querySelector("#form_main").submit();
 }
 
 function login_check2(id, password) {
     let storedId = getCookie("id");
-
-    if (storedId && storedId === id) {
+	let storedSession = session_get();
+	
+    if (storedId && storedId === id && storedSession && storedSession === password) {
         session_set(); // 세션 생성
         login_count(); // 로그인 횟수 증가
         document.querySelector('#form_main').action = "../index_login.html";
