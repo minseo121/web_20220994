@@ -14,8 +14,9 @@ function login_count() {
     if (count) {
         count = parseInt(count) + 1;
     } else {
-        count + 1;
+        count = 0; // 초기값을 0으로 설정
     }
+    count += 1; // 로그인 시도마다 count 증가
     setCookie("login_cnt", count, 1); // 1일 저장
     console.log("로그인 횟수: " + count);
 }
@@ -25,7 +26,7 @@ function logout_count() {
     if (count) {
         count = parseInt(count) + 1;
     } else {
-        count + 1;
+        count = 1;
     }
     setCookie("logout_cnt", count, 1); // 1일 저장
     console.log("로그아웃 횟수: " + count);
@@ -40,7 +41,6 @@ function login(){
     
     form.action = "../index_login.html";
     form.method = "get"
-	login_count();
     
 	if(check.checked == true) { // 아이디 체크 o
             alert("쿠키를 저장합니다.");
@@ -55,6 +55,7 @@ function login(){
     if(id.value.length === 0 || password.value.length === 0){
         alert("아이디와 비밀번호를 모두 입력해주세요.");
     }else{
+		login_count();
 		login_check();
     }
 }
