@@ -11,7 +11,7 @@ addJavascript('/js/cookie.js');
 addJavascript('/js/join.js');
 
 function login_count() {
-	let count = parseInt(getCookie_id("login_cnt"));
+	let count = parseInt(getCookie("login_cnt"));
     if (isNaN(count)) {
 		count = 0;
 	}
@@ -23,11 +23,9 @@ function login_count() {
 function logout_count() {
     let count = getCookie("logout_cnt");
     if (isNaN(count)) {
-        count + 1;
-    } else {
-        count = 1;
-    }
-    setCookie("logout_cnt", count, 1); // 1일 저장
+        count = 0;
+	}
+    setCookie("logout_cnt", count.toString(), 1); // 1일 저장
     console.log("로그아웃 횟수: " + count);
 }
 
