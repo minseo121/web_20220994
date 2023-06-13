@@ -1,5 +1,3 @@
-import userList from './userList.js';
-
 function addJavascript(jsname){
 	var th = document.getElementsByTagName('head')[0];
 	var s = document.createElement('script');
@@ -81,18 +79,10 @@ function login_check() {
         return;
     }
 
-    login_check2(id.value, password.value);
+    session_set(); // 세션 생성
+    document.querySelector("#form_main").submit();
 }
 
-function login_check2(id, password) {
-  let user = userList.find((user) => user.id === id && user.password === password);
-  if (user) {
-    session_set(); // 세션 생성
-    document.querySelector('#form_main').submit();
-  } else {
-    alert('일치하는 아이디와 패스워드가 없습니다.');
-  }
-}
 
 function get_id(){
 	if(true){

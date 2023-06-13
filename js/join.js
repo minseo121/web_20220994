@@ -1,5 +1,3 @@
-import userList from './userList.js';
-
 function addJavascript(jsname){
 	var th = document.getElementsByTagName('head')[0];
 	var s = document.createElement('script');
