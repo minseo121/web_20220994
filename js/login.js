@@ -11,15 +11,12 @@ addJavascript('/js/cookie.js');
 addJavascript('/js/join.js');
 
 function login_count() {
-    let count = getCookie("login_cnt");
+	let count = parseInt(getCookie_id("login_cnt"));
     if (isNaN(count)) {
-		let a = 1;
-        a + 1;
-    } else {
-        count = 0; // 초기값을 0으로 설정
-    }
-    count += 1; // 로그인 시도마다 count 증가
-    setCookie("login_cnt", count, 1); // 1일 저장
+		count = 0;
+	}
+	count += 1; // 로그인 시도마다 count 증가
+	setCookie("login_cnt", count.toString(), 1); // 1일 저장
     console.log("로그인 횟수: " + count);
 }
 
@@ -80,8 +77,21 @@ function login_check() {
         return;
     }
 
-    session_set(); // 세션 생성
-    document.querySelector("#form_main").submit();
+     login_check2(id.value, password.value);
+}
+
+function login_check2(id, password) {
+    let storedId = getCookie("id");
+
+    if (storedId && storedId === id) {
+        session_set(); // 세션 생성
+        login_count(); // 로그인 횟수 증가
+        document.querySelector('#form_main').action = "../index_login.html";
+        document.querySelector('#form_main').method = "get";
+        document.querySelector('#form_main').submit();
+    } else {
+        alert('일치하는 아이디가 없습니다. 회원가입을 진행해주세요.');
+    }
 }
 
 
