@@ -1,3 +1,5 @@
+import userList from './userList.js';
+
 function addJavascript(jsname){
 	var th = document.getElementsByTagName('head')[0];
 	var s = document.createElement('script');
@@ -79,7 +81,7 @@ function login_check() {
         return;
     }
 
-     login_check2(id.value, password.value);
+    login_check2(id.value, password.value);
 }
 
 function login_check2(id, password) {
