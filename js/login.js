@@ -10,9 +10,25 @@ addJavascript('/js/session.js');
 addJavascript('/js/cookie.js');
 addJavascript('/js/join.js');
 
+function login_fail(){
+	let cookieName = "login_fail";
+	let count = parseInt(getloginCookie("login_fail"));
+	if(isNaN(count)){
+		count = 0;
+	}
+	count += 1; // 로그인 실패 시도마다 count 증가
+	setCookie("login_fail", count.toString(), 1); // 1일 저장
+    console.log("로그인 실패 횟수: " + count);
+	
+	if(count == 3){
+		
+	}
+}
+
 function login_count() {
-	let count = parseInt(getCookie("login_cnt"));
-    if (isNaN(count)) {
+	let cookieName = "login_cnt";
+	let count = parseInt(getloginCookie("login_cnt"));
+	if(isNaN(count)){
 		count = 0;
 	}
 	count += 1; // 로그인 시도마다 count 증가
@@ -21,7 +37,8 @@ function login_count() {
 }
 
 function logout_count() {
-    let count = getCookie("logout_cnt");
+	let cookieName = "logout_count";
+    let count = parseInt(getlogoutCookie("logout_cnt"));
     if (isNaN(count)) {
         count = 0;
 	}
@@ -51,6 +68,7 @@ function login(){
 	
     if(id.value.length === 0 || password.value.length === 0){
         alert("아이디와 비밀번호를 모두 입력해주세요.");
+		login_fail();
 		login_count();
     }else{
 		login_count();
@@ -66,6 +84,7 @@ function login_check() {
     let emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     if (!emailRegex.test(id.value)) {
         alert("올바르게 이메일을 입력해주세요.");
+		login_fail();
         return;
     }
 
@@ -73,6 +92,7 @@ function login_check() {
     let passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
     if (!passwordRegex.test(password.value)) {
         alert("8~16자리, 숫자와 영문자 조합에 해당하는 패스워드를 입력해주세요.");
+		login_fail();
         return;
     }
 
