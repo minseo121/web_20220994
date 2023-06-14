@@ -20,8 +20,10 @@ function login_fail(){
 	setCookie("login_fail", count.toString(), 1); // 1일 저장
     console.log("로그인 실패 횟수: " + count);
 	
-	if(count == 3){
-		
+	if(count > 3){
+		alert("로그인 실패 횟수가 3회 초과하였기 때문에 로그인 제한합니다.");
+		stop_login();
+		setTimeout('start_login();',3000);
 	}
 }
 
@@ -154,4 +156,15 @@ function init(){ // 로그인 폼에 쿠키에서 가져온 아이디 입력
       check.checked = true; 
    }
 	session_check();
+}
+
+function stop_login(){
+	const target = document.getElementById('login_btn');
+	target.disabled = true;
+	deleteCookie("login_fail");
+}
+
+function start_login(){
+  const target = document.getElementById('login_btn');
+  target.disabled = false;
 }
