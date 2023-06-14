@@ -51,6 +51,7 @@ function login(){
 	
     if(id.value.length === 0 || password.value.length === 0){
         alert("아이디와 비밀번호를 모두 입력해주세요.");
+		login_count();
     }else{
 		login_count();
 		login_check();
