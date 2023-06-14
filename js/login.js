@@ -21,9 +21,9 @@ function login_fail(){
     console.log("로그인 실패 횟수: " + count);
 	
 	if(count > 3){
-		alert("로그인 실패 횟수가 3회 초과하였기 때문에 로그인 제한합니다.");
+		alert("로그인 실패 횟수가 3회 초과하였기 때문에 10초동안 로그인 제한합니다.");
 		stop_login();
-		setTimeout('start_login();',3000);
+		setTimeout('start_login();',10000);
 	}
 }
 
