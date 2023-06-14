@@ -39,11 +39,12 @@ function login_count() {
 }
 
 function logout_count() {
-	let cookieName = "logout_count";
+	let cookieName = "logout_cnt";
     let count = parseInt(getlogoutCookie("logout_cnt"));
     if (isNaN(count)) {
         count = 0;
 	}
+	count += 1; // 로그아웃 시도마다 count 증가
     setCookie("logout_cnt", count.toString(), 1); // 1일 저장
     console.log("로그아웃 횟수: " + count);
 }
